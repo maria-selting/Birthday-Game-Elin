@@ -1,0 +1,65 @@
+asteraster<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Stellaroids</title>
+    
+    <!-- Load Phaser Game Framework -->
+	<script src="libs/phaser.min.js"></script>
+    
+    <!-- Load "Engine" Files -->
+    <script src="engine/boot.js"></script>
+    <script src="engine/gameobject.js"></script>
+    <script src="engine/preloader.js"></script>
+    
+    <!-- Load all script files that the game needs -->
+    <script src="source/states/titlescreen.js"></script>
+    <script src="source/states/maingame.js"></script>
+    <script src="source/states/credits.js"></script>
+    
+    <script src="source/game/asteroid.js"></script>
+    <script src="source/game/bullet.js"></script>
+    <script src="source/game/gui.js"></script>
+    <script src="source/game/input.js"></script>
+    <script src="source/game/player.js"></script>
+    <script src="source/game/galaxy.js"></script>
+    
+    <!-- A tiny bit of CSS styling for the page -->
+    <style>
+        body { margin: 0px; padding: 0px; background: black }
+        #gameContainer { }
+        #gameContainer canvas { margin: 20px auto; border: solid #565656 2px }
+    </style>
+</head>
+<body>
+
+<h1>Hello world</h1>    
+    
+<p>I´m hosted with GitHub Pages.</p>
+    
+<div id="gameContainer"></div>
+ 
+<script type="text/javascript">
+// Make game a global object so that we can access it from anywhere
+// A bit dirty, but keeps things simple for this demo
+var game = null;
+    
+window.onload = function() 
+{
+    var gameWidth = 800
+    var gameHeight = 800
+    
+	// Create your Phaser game and inject it into the gameContainer div.
+	game = new Phaser.Game(gameWidth, gameHeight, Phaser.AUTO, 'gameContainer');
+
+    // These are the different states the game can be in - loading, main menu and the game itself.
+    game.state.add('boot', PDXBoot);
+    game.state.add('preloader', PDXPreloader);
+
+    // Start the game with the "boot" state.
+    game.state.start("boot");
+};
+</script>
+
+</body>
+</html>
